@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="headerText">Jira system for RAF students</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="statistics">Statistics</string>
+    <string name="newBottom">New</string>
+    <string name="tickets">Tickets</string>
+    <string name="profile">Profile</string>
+    <string name="addNewTicket">Add new ticket</string>
+    <string name="title">Ticket title</string>
+    <string name="titleDes">Ticket Description</string>
+    <string name="esc">Est</string>
+    <string name="tabToDo">ToDo</string>
+    <string name="tabInProgress">In progress</string>
+    <string name="tabDone">Done</string>
+    <string name="saveTicket">Save</string>
+    <string name="editTicket">Edit ticket</string>
+    <string name="kolicina_edit">Kolicina</string>
+    <string name="opis_edit">Opis</string>
+    <string name="odustani_edit">Odustani</string>
+    <string name="izmeni_edit">Izmeni</string>
+    <string name="opis_edit_ras_pri">Opis:</string>
+    <string name="naslov_podaci">Naslov:</string>
+    <string name="kolicina_podaci">Kolicina:</string>
+    <string name="opis_podaci">Opis:</string>
+    <string-array name="Spinner_tickets">
+        <item>Ticket Type</item>
+        <item>Bug</item>
+        <item>Enhancement</item>
+    </string-array>
+    <string-array name="Spinner_priority">
+        <item>Priority</item>
+        <item>Highest</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+        <item>Lowest</item>
+    </string-array>
+    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
 </resources>

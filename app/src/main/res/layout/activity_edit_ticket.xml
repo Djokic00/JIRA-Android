@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+    <Button
+            android:text="@string/saveTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/saveTicketBtn"
+            style="@style/ButtonForm"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+            android:text="@string/editTicket"
+            android:textSize="40sp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/newTicketHeading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:id="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newTicketHeading">
+
+        <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Spinner_tickets"
+                android:theme="@style/SpinnerStyle"
+                android:id="@+id/titleSpinner"/>
+        <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/Spinner_priority"
+                android:theme="@style/SpinnerStyle"
+                android:id="@+id/prioritySpinner"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="@string/esc"
+                style="@style/CredentialForm"
+                android:backgroundTint="@color/yellow"
+                android:id="@+id/estEditText"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="100dp"
+            android:gravity="center_horizontal"
+            android:id="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:hint="@string/title"
+                style="@style/CredentialForm"
+                android:id="@+id/ticketTitleEditText"
+                android:layout_marginBottom="24dp"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CredentialForm"
+                android:id="@+id/titleDesEditText"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:hint="@string/titleDes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/addNewTicketBtn"
+                app:layout_constraintHorizontal_bias="0.111"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
