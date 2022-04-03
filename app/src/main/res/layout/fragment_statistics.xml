@@ -1,6 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:background="@color/black"
+              android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/rafStats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/statisticsView" />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/toDo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textSize="20sp"
+                android:textColor="@color/red"
+                android:text="@string/tabToDo"/>
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/toDoInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/red"
+                android:textSize="20sp"
+        />
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/inProgress"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:text="@string/tabInProgress"/>
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/inProgressInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/done"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+                android:text="@string/tabDone"
+        />
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/doneInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/green"
+                android:textSize="20sp"
+        />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

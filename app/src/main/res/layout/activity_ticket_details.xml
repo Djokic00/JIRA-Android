@@ -1,10 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="view.activities.TicketDetailsActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:background="@color/black"
+              android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/ticketType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="@string/title" />
+
+        <ImageView
+                android:id="@+id/typePicture"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="20dp"
+                style="@style/ImageViewStyle"
+        />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/ticket"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textSize="20sp"
+                android:text="@string/ticketType"/>
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/ticketInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="20sp"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/ticketPriority"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textSize="20sp"
+                android:text="@string/priority"/>
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/priorityInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="20sp"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/estimationTicket"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textSize="20sp"
+                android:text="@string/estimation"
+        />
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/estimationInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20sp"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/logged"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:layout_marginLeft="60dp"
+                android:textSize="20sp"
+                android:text="@string/loggedTime"
+        />
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/loggedInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20sp"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_marginLeft="60dp"
+                android:textSize="20sp"
+                android:text="@string/titleDes"
+        />
+
+        <TextView
+                style="@style/TextViewStyle"
+                android:id="@+id/descriptionInfo"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:textSize="20sp"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+        <Button
+                style="@style/ButtonForm"
+                android:id="@+id/editBtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:textSize="20sp"
+                android:text="@string/editTicket"
+        />
+
+    </LinearLayout>
+
+
+</LinearLayout>

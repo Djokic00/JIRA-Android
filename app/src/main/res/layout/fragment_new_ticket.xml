@@ -6,15 +6,6 @@
                                                    android:layout_height="match_parent"
                                                    android:background="@color/black">
 
-
-    <Button
-            android:text="@string/addNewTicket"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/addNewTicketBtn"
-            style="@style/ButtonForm"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
     <TextView
             android:text="@string/addNewTicket"
             android:textSize="40sp"
@@ -56,37 +47,67 @@
                 android:id="@+id/estEditText"/>
     </LinearLayout>
 
-    <LinearLayout
-            android:layout_width="wrap_content"
+    <!--    <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_marginTop="100dp"-->
+    <!--            android:gravity="center_horizontal"-->
+    <!--            android:id="@+id/linearLayout"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout2">-->
+
+    <!--        <EditText-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:imeOptions="actionDone"-->
+    <!--                android:inputType="text"-->
+    <!--                android:hint="@string/title"-->
+    <!--                style="@style/CredentialForm"-->
+    <!--                android:id="@+id/ticketTitleEditText"-->
+    <!--                android:layout_marginBottom="24dp"/>-->
+    <!--        <EditText-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                style="@style/CredentialForm"-->
+    <!--                android:id="@+id/titleDesEditText"-->
+    <!--                android:imeOptions="actionDone"-->
+    <!--                android:inputType="text"-->
+    <!--                android:hint="@string/titleDes"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/addNewTicketBtn"-->
+    <!--                app:layout_constraintHorizontal_bias="0.111"/>-->
+
+    <!--    </LinearLayout>-->
+
+    <EditText
+            android:id="@+id/ticketTitleEditText"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="100dp"
-            android:gravity="center_horizontal"
-            android:id="@+id/linearLayout"
+            android:layout_marginTop="50dp"
+            style="@style/CredentialForm"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:hint="@string/title"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
-
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:hint="@string/title"
-                style="@style/CredentialForm"
-                android:id="@+id/ticketTitleEditText"
-                android:layout_marginBottom="24dp"/>
-        <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/CredentialForm"
-                android:id="@+id/titleDesEditText"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:hint="@string/titleDes"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/addNewTicketBtn"
-                app:layout_constraintHorizontal_bias="0.111"/>
-
-    </LinearLayout>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
+    <EditText
+            android:id="@+id/titleDesEditText"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            style="@style/CredentialForm"
+            android:imeOptions="actionDone"
+            android:hint="@string/titleDes"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ticketTitleEditText"/>
+    <Button
+            android:text="@string/addNewTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/addNewTicketBtn"
+            style="@style/ButtonForm"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleDesEditText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

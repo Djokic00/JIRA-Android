@@ -97,9 +97,7 @@ public class TicketViewModel extends ViewModel {
         }
     }
 
-//    private int getNumberOfTickets() {
-//        return ticket
-//    }
+
     public void editTicket(Ticket oldTicket, Ticket newTicket) {
 //        for (Ticket p: ticketList){
 //            if(p.getId() == old.getId()) {
@@ -117,6 +115,18 @@ public class TicketViewModel extends ViewModel {
 //        prihodi.setValue(listToSubmit);
     public void filterTickets(String filter) {
 
+    }
+
+    public int getNumberOfToDo() {
+        return toDoTicketList.size();
+    }
+
+    public int getNumberOfInProgress() {
+        return inProgressTicketList.size();
+    }
+
+    public int getNumberOfDone() {
+        return doneTicketList.size();
     }
 
     public MutableLiveData<List<Ticket>> getToDoTickets() {

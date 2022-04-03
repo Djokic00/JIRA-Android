@@ -1,15 +1,16 @@
 package models;
 
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 public class Ticket {
-    private String title;
-    private String description;
-    private String ticketType;
-    private String ticketPriority;
-    private String ticketState;
-    private int id;
-    private int numberOfDays;
+    protected String title;
+    protected String description;
+    protected String ticketType;
+    protected String ticketPriority;
+    protected String ticketState;
+    protected int id;
+    protected int numberOfDays;
 
     public Ticket(String title, String description, String ticketType, String ticketPriority, int numberOfDays, int id, String ticketState) {
         this.title = title;
@@ -18,6 +19,15 @@ public class Ticket {
         this.ticketPriority = ticketPriority;
         this.numberOfDays = numberOfDays;
         this.id = id;
+        this.ticketState = ticketState;
+    }
+
+    public Ticket(String title, String description, String ticketType, String ticketPriority, int numberOfDays, String ticketState) {
+        this.title = title;
+        this.description = description;
+        this.ticketType = ticketType;
+        this.ticketPriority = ticketPriority;
+        this.numberOfDays = numberOfDays;
         this.ticketState = ticketState;
     }
 
@@ -75,5 +85,18 @@ public class Ticket {
 
     public void setTicketState(String ticketState) {
         this.ticketState = ticketState;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", ticketType='" + ticketType + '\'' +
+                ", ticketPriority='" + ticketPriority + '\'' +
+                ", ticketState='" + ticketState + '\'' +
+                ", id=" + id +
+                ", numberOfDays=" + numberOfDays +
+                '}';
     }
 }

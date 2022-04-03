@@ -1,8 +1,8 @@
 package view.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,9 +10,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.application.R;
+import models.Ticket;
+import models.TicketParcelable;
 import recycler.adapter.ToDoAdapter;
 import recycler.differ.TicketDiffer;
+import view.activities.TicketDetailsActivity;
 import viewmodels.TicketViewModel;
+
+import static view.activities.TicketDetailsActivity.DETAILS_KEY;
 
 public class ToDoTicket extends Fragment {
     private TicketViewModel ticketViewModel;
@@ -44,7 +49,11 @@ public class ToDoTicket extends Fragment {
 
     public void initRecycler() {
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            Toast.makeText(getContext(), ticket.getTitle(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getContext(), ticket.getTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getActivity(), TicketDetailsActivity.class);
+            intent.putExtra(DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
+                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getTicketState()));
+            startActivity(intent);
         }, ticket -> {
             ticketViewModel.moveForwardTicket(ticket);
         }, ticket -> {
