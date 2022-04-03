@@ -61,7 +61,7 @@ public class NewTicket extends Fragment implements AdapterView.OnItemSelectedLis
                 try {
                     estimation = Integer.parseInt(est.getText().toString());
                     Ticket ticket = new Ticket(ticketTitle.getText().toString(), ticketDescription.getText().toString(), ticketSpinner.getSelectedItem().toString(),
-                            prioritySpinner.getSelectedItem().toString(), estimation, ticketNumber);
+                            prioritySpinner.getSelectedItem().toString(), estimation, ticketNumber, "toDo");
                     ticketViewModel.addTicket(ticket);
                     ticketNumber++;
                     est.getText().clear();

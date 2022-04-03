@@ -19,7 +19,7 @@
     <string name="tabDone">Done</string>
     <string name="saveTicket">Save</string>
     <string name="editTicket">Edit ticket</string>
-    <string name="kolicina_edit">Kolicina</string>
+    <string name="search">Search</string>
     <string name="opis_edit">Opis</string>
     <string name="odustani_edit">Odustani</string>
     <string name="izmeni_edit">Izmeni</string>
@@ -44,5 +44,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
 
 </resources>

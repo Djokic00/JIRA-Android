@@ -10,6 +10,12 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
         <activity
+                android:name="view.activities.TicketDetailsActivity"
+                android:exported="true"/>
+        <activity
+                android:name="view.activities.RecyclerActivity"
+                android:exported="true"/>
+        <activity
                 android:name="view.activities.EditTicketActivity"
                 android:exported="true"/>
         <activity

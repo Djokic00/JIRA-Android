@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/arrow_circle_right/baseline_arrow_circle_right_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/rocket_launch/baseline_rocket_launch_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="d3d110" />
-                            <entry key="outputName" value="move_ticket_icon" />
+                            <entry key="outputName" value="enhancment_icon" />
                           </map>
                         </option>
                       </PersistentState>

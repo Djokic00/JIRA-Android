@@ -7,17 +7,18 @@ public class Ticket {
     private String description;
     private String ticketType;
     private String ticketPriority;
-    private ImageView picture;
+    private String ticketState;
     private int id;
     private int numberOfDays;
 
-    public Ticket(String title, String description, String ticketType, String ticketPriority, int numberOfDays, int id) {
+    public Ticket(String title, String description, String ticketType, String ticketPriority, int numberOfDays, int id, String ticketState) {
         this.title = title;
         this.description = description;
         this.ticketType = ticketType;
         this.ticketPriority = ticketPriority;
         this.numberOfDays = numberOfDays;
         this.id = id;
+        this.ticketState = ticketState;
     }
 
     public int getNumberOfDays() {
@@ -68,11 +69,11 @@ public class Ticket {
         this.ticketType = ticketType;
     }
 
-    public ImageView getImageView() {
-        return picture;
+    public String getTicketState() {
+        return ticketState;
     }
 
-    public void setImageView(ImageView imageView) {
-        this.picture = imageView;
+    public void setTicketState(String ticketState) {
+        this.ticketState = ticketState;
     }
 }
