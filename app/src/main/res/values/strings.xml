@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name" translatable="false">My Application</string>
     <string name="headerText">Jira system for RAF students</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
@@ -27,8 +27,9 @@
     <string name="statisticsView">Raf JIRA Statistics</string>
     <string name="bug">Bug</string>
     <string name="enhancement">Enhancement</string>
+    <string name="ticketTypeSpinner">Ticket Type</string>
     <string-array name="Spinner_tickets">
-        <item>Ticket Type</item>
+        <item>TicketType</item>
         <item>Bug</item>
         <item>Enhancement</item>
     </string-array>
@@ -40,10 +41,5 @@
         <item>Low</item>
         <item>Lowest</item>
     </string-array>
-    <string name="title_activity_bottom_navigation">BottomNavigationActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-
 
 </resources>

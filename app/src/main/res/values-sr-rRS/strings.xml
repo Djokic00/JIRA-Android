@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="password">Sifra</string>
+    <string name="statistics">Statistika</string>
+    <string name="username">Korisnicko ime</string>
+    <string name="tickets">Tiketi</string>
+    <string name="profile">Profil</string>
+    <string name="addNewTicket">Dodaj novi tiket</string>
+    <string name="title">Naslov tiketa</string>
+    <string name="titleDes">Opis tiketa</string>
+    <string name="esc">Procena</string>
+    <string name="tabToDo">Uraditi</string>
+    <string name="tabInProgress">U procesu</string>
+    <string name="tabDone">Zavrseno</string>
+    <string name="saveTicket">Sacuvati</string>
+    <string name="editTicket">Izmeniti tiket</string>
+    <string name="search">Pretraga</string>
+    <string name="ticketType">Tip tiketa</string>
+    <string name="priority">Prioritet</string>
+    <string name="estimation">Procena</string>
+    <string name="bug">Bug</string>
+    <string name="enhancement">Enhancement</string>
+    <string name="newBottom">Novi Tiket</string>
+    <string name="email">Imejl</string>
+    <string name="login">Prijava</string>
+    <string name="logout">Odjava</string>
+    <string name="statisticsView">Raf JIRA Statistika</string>
+    <string name="loggedTime">Ulogovano vreme</string>
+    <string name="headerText">Jira sistem za Raf studente</string>
+    <string name="ticketTypeSpinner">Tip tiketa</string>
+</resources>

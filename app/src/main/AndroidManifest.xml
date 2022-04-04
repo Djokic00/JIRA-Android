@@ -10,22 +10,22 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
         <activity
-                android:name="view.activities.TicketDetailsActivity"
+                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.TicketDetailsActivity"
                 android:exported="true"/>
         <activity
-                android:name="view.activities.RecyclerActivity"
+                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.RecyclerActivity"
                 android:exported="true"/>
         <activity
-                android:name="view.activities.EditTicketActivity"
+                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.EditTicketActivity"
                 android:exported="true"/>
         <activity
-                android:name="view.activities.BottomNavigationActivity"
+                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.BottomNavigationActivity"
                 android:exported="true"/>
         <activity
-                android:name="view.activities.LoginActivity"
+                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity"
                 android:exported="true"/>
         <activity
-                android:name="view.activities.SplashActivity"
+                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.SplashActivity"
                 android:exported="true"
                 android:theme="@style/SplashTheme">
             <intent-filter>
