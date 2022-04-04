@@ -1,122 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:background="@color/black"
-              android:orientation="vertical">
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_marginTop="0dp"
-            android:orientation="vertical">
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/rafStats"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/statisticsView" />
-    </LinearLayout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:background="@color/black"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
 
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/toDo"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:layout_marginLeft="60dp"
-                android:textSize="20sp"
-                android:textColor="@color/red"
-                android:text="@string/tabToDo"/>
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/toDoInfo"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
-                android:textColor="@color/red"
-                android:textSize="20sp"
-        />
+    <TextView
+            android:id="@+id/rafStats"
+            android:layout_marginTop="80dp"
+            style="@style/TextViewStyleStats"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/headerText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+            android:id="@+id/toDO"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="140dp"
+            android:textColor="@color/red"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tabToDo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    <TextView
+            android:id="@+id/inProgress"
+            android:layout_marginTop="310dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyle"
+            android:textColor="@color/lightYellow"
+            android:layout_marginStart="30dp"
+            android:text="@string/tabInProgress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+            android:id="@+id/done"
+            android:layout_marginTop="470dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyle"
+            android:textColor="@color/green"
+            android:text="@string/tabDone"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+            android:id="@+id/enhancements1"
+            android:layout_marginLeft="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            style="@style/TextViewStyleStats"
+            android:text="@string/enhancement"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+    <TextView
+            android:id="@+id/bugs1"
+            android:layout_marginLeft="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            style="@style/TextViewStyleStats"
+            android:text="@string/bug"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enhancements1" />
 
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/inProgress"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:layout_marginLeft="60dp"
-                android:textColor="@color/yellow"
-                android:textSize="20sp"
-                android:text="@string/tabInProgress"/>
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/inProgressInfo"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
-                android:textColor="@color/yellow"
-                android:textSize="20sp"
-        />
+    <TextView
+            android:id="@+id/enhancements2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="360dp"
+            style="@style/TextViewStyleStats"
+            android:text="@string/enhancement"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    <TextView
+            android:id="@+id/bugs2"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="150dp"
+            style="@style/TextViewStyleStats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bug"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enhancements2" />
 
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/done"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="40dp"
-                android:layout_marginLeft="60dp"
-                android:textColor="@color/green"
-                android:textSize="20sp"
-                android:text="@string/tabDone"
-        />
+    <TextView
+            android:id="@+id/enhancements3"
+            android:layout_marginTop="510dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="148dp"
+            style="@style/TextViewStyleStats"
+            android:text="@string/enhancement"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-                style="@style/TextViewStyle"
-                android:id="@+id/doneInfo"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:textColor="@color/green"
-                android:textSize="20sp"
-        />
+    <TextView
+            android:id="@+id/bugs3"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyleStats"
+            android:text="@string/bug"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enhancements3" />
 
-    </LinearLayout>
+    <TextView
+            android:id="@+id/number1"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+            android:id="@+id/number2"
+            android:layout_marginTop="200dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+            android:id="@+id/number3"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number2" />
 
+    <TextView
+            android:id="@+id/number4"
+            android:layout_marginTop="310dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/lightYellow"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+            android:id="@+id/number5"
+            android:layout_marginTop="360dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+            android:id="@+id/number6"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number5" />
 
-</LinearLayout>
+    <TextView
+            android:id="@+id/number7"
+            android:layout_marginTop="470dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/number8"
+            android:layout_marginTop="510dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/number9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            style="@style/TextViewStyleStats"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/number8" />
+</androidx.constraintlayout.widget.ConstraintLayout>

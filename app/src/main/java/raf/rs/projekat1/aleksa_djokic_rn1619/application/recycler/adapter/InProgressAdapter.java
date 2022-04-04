@@ -83,6 +83,7 @@ public class InProgressAdapter extends ListAdapter<Ticket, InProgressAdapter.Vie
             }
             ((TextView) itemView.findViewById(R.id.ticketTitle)).setText(ticket.getTitle());
             ((TextView) itemView.findViewById(R.id.ticketDescription)).setText(ticket.getDescription());
+
             ImageView moveTicket = itemView.findViewById(R.id.moveRightTicket);
             ImageView deleteTicket = itemView.findViewById(R.id.moveBackTicket);
         }

@@ -15,6 +15,12 @@ public class Statistics extends Fragment {
     private TextView toDo;
     private TextView inProgress;
     private TextView done;
+    private TextView toDoEnhancement;
+    private TextView toDoBug;
+    private TextView inProgressEnhancement;
+    private TextView inProgressBug;
+    private TextView doneEnhancement;
+    private TextView doneBug;
     private TicketViewModel ticketViewModel;
 
     public Statistics() {
@@ -26,41 +32,51 @@ public class Statistics extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ticketViewModel = new ViewModelProvider(requireActivity()).get(TicketViewModel.class);
         initView(view);
-        initListeners();
+        setValues();
         initObservers();
     }
 
     private void initView(View view) {
         header = view.findViewById(R.id.rafStats);
-        toDo = view.findViewById(R.id.toDoInfo);
-        inProgress = view.findViewById(R.id.inProgressInfo);
-        done = view.findViewById(R.id.doneInfo);
+        toDo = view.findViewById(R.id.number1);
+        inProgress = view.findViewById(R.id.number4);
+        done = view.findViewById(R.id.number7);
+        toDoEnhancement = view.findViewById(R.id.number2);
+        toDoBug = view.findViewById(R.id.number3);
+        inProgressEnhancement = view.findViewById(R.id.number5);
+        inProgressBug = view.findViewById(R.id.number6);
+        doneEnhancement = view.findViewById(R.id.number8);
+        doneBug = view.findViewById(R.id.number9);
+
     }
 
-    private void initListeners() {
+    private void setValues() {
         Integer numberOfToDo = ticketViewModel.getNumberOfToDo();
         Integer numberOfInProgress = ticketViewModel.getNumberOfInProgress();
         Integer numberOfDone = ticketViewModel.getNumberOfDone();
 
         toDo.setText(String.valueOf(numberOfToDo));
+        toDoBug.setText(String.valueOf(ticketViewModel.getNumberOfBugsToDo()));
+        toDoEnhancement.setText(String.valueOf(ticketViewModel.getNumberOfEnhancementToDo()));
         inProgress.setText(String.valueOf(numberOfInProgress));
+        inProgressBug.setText(String.valueOf(ticketViewModel.getNumberOfBugsInProgress()));
+        inProgressEnhancement.setText(String.valueOf(ticketViewModel.getNumberOfEnhancementInProgress()));
         done.setText(String.valueOf(numberOfDone));
+        doneBug.setText(String.valueOf(ticketViewModel.getNumberOfBugsDone()));
+        doneEnhancement.setText(String.valueOf(ticketViewModel.getNumberOfEnhancementDone()));
     }
 
     public void initObservers() {
         ticketViewModel.getToDoTickets().observe(getViewLifecycleOwner(), ticket -> {
-            Integer numberOfToDo = ticketViewModel.getNumberOfToDo();
-            toDo.setText(String.valueOf(numberOfToDo));
+            setValues();
         });
 
         ticketViewModel.getInProgressTickets().observe(getViewLifecycleOwner(), ticket -> {
-            Integer numberOfInProgress = ticketViewModel.getNumberOfInProgress();
-            inProgress.setText(String.valueOf(numberOfInProgress));
+            setValues();
         });
 
         ticketViewModel.getDoneTickets().observe(getViewLifecycleOwner(), ticket -> {
-            Integer numberOfDone = ticketViewModel.getNumberOfDone();
-            done.setText(String.valueOf(numberOfDone));
+            setValues();
         });
 
     }

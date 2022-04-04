@@ -11,6 +11,8 @@ import com.example.application.R;
 public class LoginActivity extends AppCompatActivity {
     public static final String CREDENTIAL_KEY1 = "credentialKey1";
     public static final String CREDENTIAL_KEY2 = "credentialKey2";
+    public static final String CREDENTIAL_KEY_IS_ADMIN = "credentialKey3";
+    public static final String PACKAGE_NAME = "packageName";
     private ImageView imageView;
     private Button loginBtn;
     private EditText username;
@@ -47,11 +49,11 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Password must have at least 5 characters", Toast.LENGTH_SHORT).show();
             }
             else if (username.getText().toString().startsWith("admin") && password.getText().toString().equals("admin123")) {
-                saveCredentials();
+                saveCredentials("true");
                 Toast.makeText(this, "Admin has successfully logged in", Toast.LENGTH_SHORT).show();
             }
             else if (password.getText().toString().equals("aleksa123")) {
-                saveCredentials();
+                saveCredentials("false");
                 Toast.makeText(this, "User has successfully logged in", Toast.LENGTH_SHORT).show();
             }
             else Toast.makeText(this, "Username or password are not correct!", Toast.LENGTH_SHORT).show();
@@ -62,12 +64,13 @@ public class LoginActivity extends AppCompatActivity {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches();
     }
 
-    private void saveCredentials() {
-        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+    private void saveCredentials(String isAdmin) {
+        SharedPreferences sharedPreferences = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
         sharedPreferences
                 .edit()
                 .putString(CREDENTIAL_KEY1, username.getText().toString())
                 .putString(CREDENTIAL_KEY2, email.getText().toString())
+                .putString(CREDENTIAL_KEY_IS_ADMIN, isAdmin)
                 .apply();
         Intent intent = new Intent(this, BottomNavigationActivity.class);
         startActivity(intent);

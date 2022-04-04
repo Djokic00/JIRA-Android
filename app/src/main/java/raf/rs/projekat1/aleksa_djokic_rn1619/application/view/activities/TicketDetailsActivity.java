@@ -1,6 +1,10 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Parcelable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
+import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.TicketParcelable;
+
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.EditTicketActivity.EDIT_KEY;
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.PACKAGE_NAME;
 
 public class TicketDetailsActivity extends AppCompatActivity {
 
@@ -47,7 +55,6 @@ public class TicketDetailsActivity extends AppCompatActivity {
         if (intent.getExtras() != null) {
             ticket = intent.getExtras().getParcelable(DETAILS_KEY);
             if (ticket != null) {
-                System.out.println(ticket.getTitle());
                 if (ticket.getTicketType().equals("Bug")) ticketTypeImage.setImageResource(R.drawable.bug_icon);
                 else ticketTypeImage.setImageResource(R.drawable.enhancement_icon);
                 ticketTitle.setText(ticket.getTitle());
@@ -57,10 +64,11 @@ public class TicketDetailsActivity extends AppCompatActivity {
                 ticketDescriptionInfo.setText(ticket.getDescription());
             }
         }
-//        if (!admin || (!ticket.getTicketState().equals("toDo") && !ticket.getTicketState().equals("inProgress"))) {
-//            editTicketBtn.setVisibility(View.GONE);
-//        }
-
+        SharedPreferences sharedPreferences = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
+        String admin = sharedPreferences.getString(LoginActivity.CREDENTIAL_KEY_IS_ADMIN, null);
+        if (!admin.equals("true") || (ticket.getTicketState().equals("done"))) {
+            editTicketBtn.setVisibility(View.GONE);
+        }
     }
 
     public void initListeners() {
@@ -73,6 +81,12 @@ public class TicketDetailsActivity extends AppCompatActivity {
             loggedTimeCounter--;
             loggedTime.setText(String.valueOf(loggedTimeCounter));
             return false;
+        });
+
+        editTicketBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, EditTicketActivity.class);
+            intent.putExtra(EDIT_KEY, (Parcelable) ticket);
+            startActivity(intent);
         });
     }
 }

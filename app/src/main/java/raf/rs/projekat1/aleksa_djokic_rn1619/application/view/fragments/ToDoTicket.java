@@ -67,7 +67,6 @@ public class ToDoTicket extends Fragment {
 
     public void initRecycler() {
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            //Toast.makeText(getContext(), ticket.getTitle(), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getActivity(), TicketDetailsActivity.class);
             intent.putExtra(TicketDetailsActivity.DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
                     ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getTicketState()));

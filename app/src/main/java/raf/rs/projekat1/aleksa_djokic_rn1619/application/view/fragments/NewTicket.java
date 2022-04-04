@@ -50,7 +50,6 @@ public class NewTicket extends Fragment implements AdapterView.OnItemSelectedLis
         ticketSpinner.setOnItemSelectedListener(this);
         prioritySpinner.setOnItemSelectedListener(this);
         addTicketBtn.setOnClickListener(view -> {
-
             if (ticketSpinner.getSelectedItem().toString().equals("Ticket type") || prioritySpinner.getSelectedItem().toString().equals("Priority") ||
                     est.getText().toString().isEmpty() || ticketTitle.getText().toString().isEmpty() || ticketDescription.getText().toString().isEmpty()) {
                 Toast.makeText(getActivity(), "Fill in all the fields", Toast.LENGTH_SHORT).show();

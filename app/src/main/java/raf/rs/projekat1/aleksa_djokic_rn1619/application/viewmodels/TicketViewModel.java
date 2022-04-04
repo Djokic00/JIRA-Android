@@ -1,5 +1,6 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.viewmodels;
 
+import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TicketViewModel extends ViewModel {
-    public static int counter = 10;
+    public static int counter = 15;
     private final MutableLiveData<List<Ticket>> toDoTickets = new MutableLiveData<>();
     private final MutableLiveData<List<Ticket>> inProgressTickets = new MutableLiveData<>();
     private final MutableLiveData<List<Ticket>> doneTickets = new MutableLiveData<>();
@@ -66,57 +67,90 @@ public class TicketViewModel extends ViewModel {
 
     public void moveForwardTicket(Ticket ticket) {
         if (ticket.getTicketState().equals("toDo")) {
+            removeTicket(ticket);
             ticket.setTicketState("inProgress");
-            toDoTicketList.remove(ticket);
-            inProgressTicketList.add(ticket);
-            ArrayList<Ticket> toDoListToSubmit = new ArrayList<>(toDoTicketList);
-            toDoTickets.setValue(toDoListToSubmit);
-            ArrayList<Ticket> inProgressListToSubmit = new ArrayList<>(inProgressTicketList);
-            inProgressTickets.setValue(inProgressListToSubmit);
+            addTicket(ticket);
         }
         else if (ticket.getTicketState().equals("inProgress")) {
+            removeTicket(ticket);
             ticket.setTicketState("done");
-            inProgressTicketList.remove(ticket);
-            doneTicketList.add(ticket);
-            ArrayList<Ticket> inProgressListToSubmit = new ArrayList<>(inProgressTicketList);
-            inProgressTickets.setValue(inProgressListToSubmit);
-            ArrayList<Ticket> doneListToSubmit = new ArrayList<>(doneTicketList);
-            doneTickets.setValue(doneListToSubmit);
+            addTicket(ticket);
         }
     }
 
     public void moveBackwardTicket(Ticket ticket) {
         if (ticket.getTicketState().equals("inProgress")) {
+            removeTicket(ticket);
             ticket.setTicketState("toDo");
-            inProgressTicketList.remove(ticket);
-            toDoTicketList.add(ticket);
-            ArrayList<Ticket> inProgressListToSubmit = new ArrayList<>(inProgressTicketList);
-            inProgressTickets.setValue(inProgressListToSubmit);
-            ArrayList<Ticket> toDoListToSubmit = new ArrayList<>(toDoTicketList);
-            toDoTickets.setValue(toDoListToSubmit);
+            addTicket(ticket);
         }
     }
 
 
     public void editTicket(Ticket oldTicket, Ticket newTicket) {
-//        for (Ticket p: ticketList){
-//            if(p.getId() == old.getId()) {
-//                p.setKolicina(newPrihod.getKolicina());
-//                p.setNaslov(newPrihod.getNaslov());
-//                if(newPrihod.getFile() != null) {
-//                    p.setFile(newPrihod.getFile());
-//                }else {
-//                    p.setOpis(newPrihod.getOpis());
-//                }
-//            }
-
-        }
 //        ArrayList<Prihod> listToSubmit = new ArrayList<>(prihodiLista);
 //        prihodi.setValue(listToSubmit);
+    }
+
+    public void editToDoTicket(Ticket oldTicket, Ticket newTicket) {
+        for (Ticket ticket: toDoTicketList) {
+            if (ticket.getId() == oldTicket.getId()) {
+                ticket.setTitle(newTicket.getTitle());
+                ticket.setDescription(newTicket.getDescription());
+                ticket.setTicketType(newTicket.getTicketType());
+                ticket.setTicketPriority(newTicket.getTicketPriority());
+                ticket.setNumberOfDays(newTicket.getNumberOfDays());
+            }
+        }
+
+        if (oldTicket.getTicketState().equals("toDo")) {
+            ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
+            toDoTickets.setValue(listToSubmit);
+        }
+    }
+
+
+
     public void filterToDoTickets(String filter) {
         List<Ticket> filteredList = toDoTicketList.stream().filter(ticket ->
                 ticket.getTitle().toLowerCase().startsWith(filter.toLowerCase())).collect(Collectors.toList());
         toDoTickets.setValue(filteredList);
+    }
+
+    public void filterInProgressTickets(String filter) {
+        List<Ticket> filteredList = inProgressTicketList.stream().filter(ticket ->
+                ticket.getTitle().toLowerCase().startsWith(filter.toLowerCase())).collect(Collectors.toList());
+        inProgressTickets.setValue(filteredList);
+    }
+
+    public void filterDoneTickets(String filter) {
+        List<Ticket> filteredList = doneTicketList.stream().filter(ticket ->
+                ticket.getTitle().toLowerCase().startsWith(filter.toLowerCase())).collect(Collectors.toList());
+        doneTickets.setValue(filteredList);
+    }
+
+    public long getNumberOfBugsToDo() {
+        return toDoTicketList.stream().filter(ticket -> ticket.getTicketType().equals("Bug")).count();
+    }
+
+    public long getNumberOfEnhancementToDo() {
+        return toDoTicketList.stream().filter(ticket -> ticket.getTicketType().equals("Enhancement")).count();
+    }
+
+    public long getNumberOfBugsInProgress() {
+        return inProgressTicketList.stream().filter(ticket -> ticket.getTicketType().equals("Bug")).count();
+    }
+
+    public long getNumberOfEnhancementInProgress() {
+        return inProgressTicketList.stream().filter(ticket -> ticket.getTicketType().equals("Enhancement")).count();
+    }
+
+    public long getNumberOfBugsDone() {
+        return doneTicketList.stream().filter(ticket -> ticket.getTicketType().equals("Bug")).count();
+    }
+
+    public long getNumberOfEnhancementDone() {
+        return doneTicketList.stream().filter(ticket -> ticket.getTicketType().equals("Enhancement")).count();
     }
 
     public int getNumberOfToDo() {

@@ -1,9 +1,13 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.models;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Ticket {
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.CREDENTIAL_KEY_IS_ADMIN;
+
+public class Ticket { // implements Parcelable {
     protected String title;
     protected String description;
     protected String ticketType;
@@ -11,6 +15,8 @@ public class Ticket {
     protected String ticketState;
     protected int id;
     protected int numberOfDays;
+    private Context context;
+    private SharedPreferences sharedPrefs;
 
     public Ticket(String title, String description, String ticketType, String ticketPriority, int numberOfDays, int id, String ticketState) {
         this.title = title;
@@ -29,6 +35,37 @@ public class Ticket {
         this.ticketPriority = ticketPriority;
         this.numberOfDays = numberOfDays;
         this.ticketState = ticketState;
+    }
+
+    public Ticket(Context context) {
+        this.context = context;
+        sharedPrefs = context.getSharedPreferences("name", 0);
+    }
+
+    protected Ticket(Parcel in) {
+        title = in.readString();
+        description = in.readString();
+        ticketType = in.readString();
+        ticketPriority = in.readString();
+        ticketState = in.readString();
+        id = in.readInt();
+        numberOfDays = in.readInt();
+    }
+
+//    public static final Creator<Ticket> CREATOR = new Creator<Ticket>() {
+//        @Override
+//        public Ticket createFromParcel(Parcel in) {
+//            return new Ticket(in);
+//        }
+//
+//        @Override
+//        public Ticket[] newArray(int size) {
+//            return new Ticket[size];
+//        }
+//    };
+
+    private String doSomething(){
+        return sharedPrefs.getString(CREDENTIAL_KEY_IS_ADMIN, "defValue");
     }
 
     public int getNumberOfDays() {
@@ -99,4 +136,20 @@ public class Ticket {
                 ", numberOfDays=" + numberOfDays +
                 '}';
     }
+//
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel parcel, int i) {
+//        parcel.writeString(title);
+//        parcel.writeString(description);
+//        parcel.writeString(ticketType);
+//        parcel.writeString(ticketPriority);
+//        parcel.writeString(ticketState);
+//        parcel.writeInt(id);
+//        parcel.writeInt(numberOfDays);
+//    }
 }

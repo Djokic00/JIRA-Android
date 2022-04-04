@@ -1,5 +1,7 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.recycler.adapter;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
 import org.jetbrains.annotations.NotNull;
+import raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity;
 
 import java.util.function.Consumer;
+
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.CREDENTIAL_KEY_IS_ADMIN;
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.PACKAGE_NAME;
 
 public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
 
@@ -83,8 +89,14 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
             }
             ((TextView) itemView.findViewById(R.id.ticketTitle)).setText(ticket.getTitle());
             ((TextView) itemView.findViewById(R.id.ticketDescription)).setText(ticket.getDescription());
-            ImageView moveTicket = itemView.findViewById(R.id.moveTicket);
-            ImageView deleteTicket = itemView.findViewById(R.id.deleteTicket);
+
+            SharedPreferences sharedPreferences = itemView.getContext().getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
+            String message = sharedPreferences.getString(CREDENTIAL_KEY_IS_ADMIN, null);
+            if (message.equals("false")) {
+                ImageView deleteTicket = itemView.findViewById(R.id.deleteTicket);
+                deleteTicket.setVisibility(View.GONE);
+            }
+            System.out.println("BOMBA");
         }
     }
 }

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import androidx.core.splashscreen.SplashScreen;
 import com.example.application.R;
 
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.PACKAGE_NAME;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -22,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void checkLogin() {
-        SharedPreferences sharedPreferences = getSharedPreferences(getPackageName(), Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
         String message = sharedPreferences.getString(LoginActivity.CREDENTIAL_KEY1, null);
         Intent intent;
         if (message == null) {

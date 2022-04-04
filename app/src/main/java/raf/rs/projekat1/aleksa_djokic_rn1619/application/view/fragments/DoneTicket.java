@@ -2,7 +2,10 @@ package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,6 +25,7 @@ public class DoneTicket extends Fragment {
     private TicketViewModel ticketViewModel;
     private DoneAdapter doneAdapter;
     private RecyclerView recyclerView;
+    private EditText search;
 
     public DoneTicket() {
             super(R.layout.fragment_done_recycler);
@@ -32,12 +36,29 @@ public class DoneTicket extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ticketViewModel = new ViewModelProvider(requireActivity()).get(TicketViewModel.class);
         initView(view);
+        initListeners();
         initObservers();
         initRecycler();
     }
 
     public void initView(View view) {
         recyclerView = view.findViewById(R.id.doneRv);
+        search = view.findViewById(R.id.searchDone);
+    }
+
+    public void initListeners() {
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                ticketViewModel.filterDoneTickets(editable.toString());
+            }
+        });
     }
 
     public void initObservers() {

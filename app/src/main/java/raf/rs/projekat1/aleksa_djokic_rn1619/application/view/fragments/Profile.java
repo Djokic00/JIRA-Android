@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity;
 
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.PACKAGE_NAME;
+
 public class Profile extends Fragment {
 
    private ImageView imageView;
@@ -34,7 +36,7 @@ public class Profile extends Fragment {
     }
 
     private void initView(View view) {
-        sharedPreferences = this.getActivity().getSharedPreferences(this.getActivity().getPackageName(), Context.MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
         String usernameMessage = sharedPreferences.getString(LoginActivity.CREDENTIAL_KEY1, null);
         String emailMessage = sharedPreferences.getString(LoginActivity.CREDENTIAL_KEY2, null);
 
