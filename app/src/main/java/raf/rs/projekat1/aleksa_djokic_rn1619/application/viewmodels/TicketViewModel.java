@@ -96,7 +96,7 @@ public class TicketViewModel extends ViewModel {
         }
         toDoTicketList.set(index, oldTicket);
         ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
-        System.out.println("KAKO JEBENO");
+        System.out.println("KONACNO");
         toDoTickets.setValue(listToSubmit);
 
     }
@@ -119,6 +119,7 @@ public class TicketViewModel extends ViewModel {
         for (Ticket ticket : toDoTicketList) {
             System.out.println(ticket.toString());
         }
+
         ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
         toDoTickets.setValue(listToSubmit);
     }
@@ -202,4 +203,5 @@ public class TicketViewModel extends ViewModel {
     public MutableLiveData<List<Ticket>> getDoneTickets() {
         return doneTickets;
     }
+
 }

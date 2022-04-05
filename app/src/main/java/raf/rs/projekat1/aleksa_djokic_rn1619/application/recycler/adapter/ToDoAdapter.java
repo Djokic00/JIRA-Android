@@ -53,11 +53,13 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Ticket ticket = getItem(position); // uzima auto na odredjenoj poziciji iz ViewModela liste
+        Ticket ticket = getItem(position); // uzima tiket na odredjenoj poziciji iz ViewModela liste
         holder.bind(ticket);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
+        private boolean flag = true;
+
         public ViewHolder(@NonNull View itemView, Consumer<Integer> onImageClicked, Consumer<Integer> onMoveClicked,
                           Consumer<Integer> onDeleteClicked) {
             super(itemView);
@@ -77,6 +79,12 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
                     onDeleteClicked.accept(getBindingAdapterPosition());
                 }
             });
+
+            SharedPreferences sharedPreferences = itemView.getContext().getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
+            String message = sharedPreferences.getString(CREDENTIAL_KEY_IS_ADMIN, null);
+            if (message.equals("false")) {
+                flag = false;
+            }
         }
 
         public void bind(Ticket ticket) {
@@ -90,9 +98,7 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
             ((TextView) itemView.findViewById(R.id.ticketTitle)).setText(ticket.getTitle());
             ((TextView) itemView.findViewById(R.id.ticketDescription)).setText(ticket.getDescription());
 
-            SharedPreferences sharedPreferences = itemView.getContext().getSharedPreferences(PACKAGE_NAME, Context.MODE_PRIVATE);
-            String message = sharedPreferences.getString(CREDENTIAL_KEY_IS_ADMIN, null);
-            if (message.equals("false")) {
+            if (!flag) {
                 ImageView deleteTicket = itemView.findViewById(R.id.deleteTicket);
                 deleteTicket.setVisibility(View.GONE);
             }

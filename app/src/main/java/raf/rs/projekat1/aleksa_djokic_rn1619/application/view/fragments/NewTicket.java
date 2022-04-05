@@ -21,7 +21,7 @@ public class NewTicket extends Fragment implements AdapterView.OnItemSelectedLis
     private EditText ticketDescription;
     private Button addTicketBtn;
     private int estimation;
-    private int ticketNumber = 0;
+    private int ticketNumber;
     private TicketViewModel ticketViewModel;
 
     public NewTicket() {
@@ -32,6 +32,7 @@ public class NewTicket extends Fragment implements AdapterView.OnItemSelectedLis
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ticketViewModel = new ViewModelProvider(requireActivity()).get(TicketViewModel.class);
+        ticketNumber = TicketViewModel.counter;
         initView(view);
         initListeners();
     }

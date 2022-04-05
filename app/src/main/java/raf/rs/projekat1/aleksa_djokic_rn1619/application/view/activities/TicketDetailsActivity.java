@@ -58,6 +58,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
        Intent intent = getIntent();
         if (intent.getExtras() != null) {
             ticket = intent.getExtras().getParcelable(DETAILS_KEY);
+//            ticketViewModel.editTicket(ticket);
             if (ticket != null) {
                 if (ticket.getTicketType().equals("Bug")) ticketTypeImage.setImageResource(R.drawable.bug_icon);
                 else ticketTypeImage.setImageResource(R.drawable.enhancement_icon);

@@ -14,7 +14,6 @@ public class TicketDiffer extends DiffUtil.ItemCallback<Ticket> {
 
     @Override
     public boolean areContentsTheSame(@NonNull Ticket oldItem, @NotNull Ticket newItem) {
-        System.out.println("nesto si skontao");
         Boolean flag = oldItem.getTitle().equals(newItem.getTitle()) && oldItem.getTicketType().equals(newItem.getTicketType())
                 && oldItem.getTicketPriority().equals(newItem.getTicketPriority()) && oldItem.getDescription().equals(newItem.getDescription())
                 && oldItem.getNumberOfDays() == newItem.getNumberOfDays();

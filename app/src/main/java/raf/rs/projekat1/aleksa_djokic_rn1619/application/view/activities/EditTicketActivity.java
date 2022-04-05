@@ -90,8 +90,10 @@ public class EditTicketActivity extends AppCompatActivity {
             else if (!est.getText().toString().isEmpty()) {
                 try {
                     estimation = Integer.parseInt(est.getText().toString());
-                    Ticket newTicket = new Ticket(ticketTitle.getText().toString(), ticketDescription.getText().toString(), ticketSpinner.getSelectedItem().toString(),
-                            prioritySpinner.getSelectedItem().toString(), estimation, ticketNumber, "toDo");
+//                    Ticket newTicket = new Ticket(ticketTitle.getText().toString(), ticketDescription.getText().toString(), ticketSpinner.getSelectedItem().toString(),
+//                            prioritySpinner.getSelectedItem().toString(), estimation, ticketNumber, "toDo");
+                    Ticket newTicket = oldTicket;
+                    newTicket.setTicketType(ticketSpinner.getSelectedItem().toString());
 
                     // Odavde pozivam
                     if (oldTicket.getTicketState().equals("toDo")) ticketViewModel.editToDoTicket(oldTicket, newTicket);

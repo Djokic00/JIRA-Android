@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.application.R;
+import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.TicketParcelable;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.recycler.adapter.ToDoAdapter;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.recycler.differ.TicketDiffer;
@@ -68,14 +69,14 @@ public class ToDoTicket extends Fragment {
     }
 
     public void initRecycler() {
-        System.out.println("sad");
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            //ticketViewModel.editTicket(ticket, ticket);
+//            Ticket ticket1 = ticket;
+//            ticket1.setTitle("Sad radi...");
+//            ticketViewModel.editToDoTicket(ticket, ticket1);
             Intent intent = new Intent(requireActivity(), TicketDetailsActivity.class);
 //            intent.putExtra(TicketDetailsActivity.DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
 //                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getId(), ticket.getTicketState()));
             intent.putExtra(TicketDetailsActivity.DETAILS_KEY, ticket);
-            System.out.println("Okinulo se");
             startActivity(intent);
         }, ticket -> {
             ticketViewModel.moveForwardTicket(ticket);

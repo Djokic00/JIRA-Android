@@ -1,13 +1,10 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.models;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.CREDENTIAL_KEY_IS_ADMIN;
-
-public class Ticket  implements Parcelable {
+public class Ticket implements Parcelable {
     protected String title;
     protected String description;
     protected String ticketType;
@@ -59,6 +56,11 @@ public class Ticket  implements Parcelable {
             return new Ticket[size];
         }
     };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
 
     public int getNumberOfDays() {
@@ -130,9 +132,6 @@ public class Ticket  implements Parcelable {
                 '}';
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+
 
 }
