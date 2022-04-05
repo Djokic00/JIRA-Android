@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.lifecycle.ViewModelProvider;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.TicketParcelable;
+import raf.rs.projekat1.aleksa_djokic_rn1619.application.viewmodels.TicketViewModel;
 
 import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.EditTicketActivity.EDIT_KEY;
 import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.PACKAGE_NAME;
@@ -29,12 +31,14 @@ public class TicketDetailsActivity extends AppCompatActivity {
     private Button editTicketBtn;
     private int loggedTimeCounter = 0;
     private Ticket ticket;
+    private TicketViewModel ticketViewModel;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_details);
+        ticketViewModel = new ViewModelProvider(this).get(TicketViewModel.class);
         initView();
         initListeners();
         parseIntent();
@@ -51,7 +55,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
     }
 
     public void parseIntent() {
-        Intent intent = getIntent();
+       Intent intent = getIntent();
         if (intent.getExtras() != null) {
             ticket = intent.getExtras().getParcelable(DETAILS_KEY);
             if (ticket != null) {
@@ -85,7 +89,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
         editTicketBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, EditTicketActivity.class);
-            intent.putExtra(EDIT_KEY, (Parcelable) ticket);
+            intent.putExtra(EDIT_KEY, ticket);
             startActivity(intent);
         });
     }

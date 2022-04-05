@@ -17,7 +17,6 @@
     <style name="SplashTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">#202020</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/android</item>
-        <item name="postSplashScreenTheme">@style/Theme.MyApplication</item>
     </style>
 
     <style name="ButtonForm" parent="Theme.MyApplication">

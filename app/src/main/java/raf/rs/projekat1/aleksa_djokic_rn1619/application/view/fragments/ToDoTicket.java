@@ -2,6 +2,7 @@ package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -61,15 +62,20 @@ public class ToDoTicket extends Fragment {
 
     public void initObservers() {
         ticketViewModel.getToDoTickets().observe(getViewLifecycleOwner(), ticket -> {
+            System.out.println("Ulazi");
             toDoAdapter.submitList(ticket);
         });
     }
 
     public void initRecycler() {
+        System.out.println("sad");
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-            Intent intent = new Intent(getActivity(), TicketDetailsActivity.class);
-            intent.putExtra(TicketDetailsActivity.DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
-                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getTicketState()));
+            //ticketViewModel.editTicket(ticket, ticket);
+            Intent intent = new Intent(requireActivity(), TicketDetailsActivity.class);
+//            intent.putExtra(TicketDetailsActivity.DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
+//                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getId(), ticket.getTicketState()));
+            intent.putExtra(TicketDetailsActivity.DETAILS_KEY, ticket);
+            System.out.println("Okinulo se");
             startActivity(intent);
         }, ticket -> {
             ticketViewModel.moveForwardTicket(ticket);

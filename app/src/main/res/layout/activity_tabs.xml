@@ -22,20 +22,17 @@
         <com.google.android.material.tabs.TabItem
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/tabToDo"/>
+                android:layout_height="match_parent"/>
 
         <com.google.android.material.tabs.TabItem
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/tabInProgress"/>
+                android:layout_height="match_parent"/>
 
         <com.google.android.material.tabs.TabItem
                 style="@style/TextViewStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/tabDone"/>
+                android:layout_height="match_parent"/>
 
     </com.google.android.material.tabs.TabLayout>
 

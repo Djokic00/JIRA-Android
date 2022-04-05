@@ -49,7 +49,6 @@ public class TicketViewModel extends ViewModel {
             ArrayList<Ticket> doneListToSubmit = new ArrayList<>(doneTicketList);
             doneTickets.setValue(doneListToSubmit);
         }
-
     }
 
     public void removeTicket(Ticket ticket) {
@@ -86,13 +85,26 @@ public class TicketViewModel extends ViewModel {
         }
     }
 
+    public void editTicket(Ticket oldTicket) {
+        int index = toDoTicketList.indexOf(oldTicket);
+        for (Ticket ticket : toDoTicketList) {
+            System.out.println(ticket.toString());
+        }
+        if (index < 0) {
+            System.out.println("WHAT");
+            return;
+        }
+        toDoTicketList.set(index, oldTicket);
+        ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
+        System.out.println("KAKO JEBENO");
+        toDoTickets.setValue(listToSubmit);
 
-    public void editTicket(Ticket oldTicket, Ticket newTicket) {
-//        ArrayList<Prihod> listToSubmit = new ArrayList<>(prihodiLista);
-//        prihodi.setValue(listToSubmit);
     }
 
     public void editToDoTicket(Ticket oldTicket, Ticket newTicket) {
+        for (Ticket ticket : toDoTicketList) {
+            System.out.println(ticket.toString());
+        }
         for (Ticket ticket: toDoTicketList) {
             if (ticket.getId() == oldTicket.getId()) {
                 ticket.setTitle(newTicket.getTitle());
@@ -100,15 +112,31 @@ public class TicketViewModel extends ViewModel {
                 ticket.setTicketType(newTicket.getTicketType());
                 ticket.setTicketPriority(newTicket.getTicketPriority());
                 ticket.setNumberOfDays(newTicket.getNumberOfDays());
+                ticket.setTicketState(oldTicket.getTicketState());
             }
         }
-
-        if (oldTicket.getTicketState().equals("toDo")) {
-            ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
-            toDoTickets.setValue(listToSubmit);
+        System.out.println("---------------------------------------------------------");
+        for (Ticket ticket : toDoTicketList) {
+            System.out.println(ticket.toString());
         }
+        ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
+        toDoTickets.setValue(listToSubmit);
     }
 
+    public void editInProgressTicket(Ticket oldTicket, Ticket newTicket) {
+        for (Ticket ticket: inProgressTicketList) {
+            if (ticket.getId() == oldTicket.getId()) {
+                ticket.setTitle(newTicket.getTitle());
+                ticket.setDescription(newTicket.getDescription());
+                ticket.setTicketType(newTicket.getTicketType());
+                ticket.setTicketPriority(newTicket.getTicketPriority());
+                ticket.setNumberOfDays(newTicket.getNumberOfDays());
+                ticket.setTicketState(oldTicket.getTicketState());
+            }
+        }
+        ArrayList<Ticket> listToSubmit = new ArrayList<>(inProgressTicketList);
+        inProgressTickets.setValue(listToSubmit);
+    }
 
 
     public void filterToDoTickets(String filter) {

@@ -23,7 +23,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT); // samo trenutni fragment prolazi kroz ovo stanje
     }
 
-    @NonNull
     @NotNull
     @Override
     public Fragment getItem(int position) {

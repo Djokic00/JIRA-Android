@@ -69,9 +69,9 @@ public class DoneTicket extends Fragment {
 
     public void initRecycler() {
         doneAdapter = new DoneAdapter(new TicketDiffer(), ticket -> {
-            Intent intent = new Intent(getActivity(), TicketDetailsActivity.class);
+            Intent intent = new Intent(requireActivity(), TicketDetailsActivity.class);
             intent.putExtra(DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
-                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getTicketState()));
+                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getId(), ticket.getTicketState()));
             startActivity(intent);
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

@@ -15,12 +15,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
-        splashScreen.setKeepOnScreenCondition(() -> {
-            checkLogin();
-            return false;
-        });
-        setContentView(R.layout.activity_splash_screen);
+        checkLogin();
     }
 
     public void checkLogin() {
@@ -34,5 +29,6 @@ public class SplashActivity extends AppCompatActivity {
             intent = new Intent(this, BottomNavigationActivity.class);
         }
         startActivity(intent);
+        finish();
     }
 }

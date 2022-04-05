@@ -1,9 +1,7 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities;
 
-import android.content.Context;
+
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -94,7 +92,11 @@ public class EditTicketActivity extends AppCompatActivity {
                     estimation = Integer.parseInt(est.getText().toString());
                     Ticket newTicket = new Ticket(ticketTitle.getText().toString(), ticketDescription.getText().toString(), ticketSpinner.getSelectedItem().toString(),
                             prioritySpinner.getSelectedItem().toString(), estimation, ticketNumber, "toDo");
+
+                    // Odavde pozivam
                     if (oldTicket.getTicketState().equals("toDo")) ticketViewModel.editToDoTicket(oldTicket, newTicket);
+                    else if (oldTicket.getTicketState().equals("inProgress")) ticketViewModel.editInProgressTicket(oldTicket, newTicket);
+
                     est.getText().clear();
                     ticketTitle.getText().clear();
                     ticketDescription.getText().clear();

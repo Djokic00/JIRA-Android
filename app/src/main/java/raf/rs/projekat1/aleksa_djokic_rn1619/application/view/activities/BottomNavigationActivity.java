@@ -1,5 +1,6 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities;
 
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.viewpager.widget.ViewPager;
@@ -40,5 +41,10 @@ public class BottomNavigationActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "Cant back press", Toast.LENGTH_SHORT).show();
     }
 }

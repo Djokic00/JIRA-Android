@@ -35,7 +35,7 @@ public class ListTickets extends Fragment {
     }
 
     private void initTabs() {
-        viewPager.setAdapter(new TabAdapter(getActivity().getSupportFragmentManager()));
+        viewPager.setAdapter(new TabAdapter(getChildFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
     }
 }

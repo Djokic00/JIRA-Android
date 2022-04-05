@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.application">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
+            android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.Main"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -11,9 +14,6 @@
             android:theme="@style/Theme.MyApplication">
         <activity
                 android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.TicketDetailsActivity"
-                android:exported="true"/>
-        <activity
-                android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.RecyclerActivity"
                 android:exported="true"/>
         <activity
                 android:name="raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.EditTicketActivity"

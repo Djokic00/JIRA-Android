@@ -3,6 +3,7 @@ package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.fragments;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -78,6 +79,5 @@ public class Statistics extends Fragment {
         ticketViewModel.getDoneTickets().observe(getViewLifecycleOwner(), ticket -> {
             setValues();
         });
-
     }
 }

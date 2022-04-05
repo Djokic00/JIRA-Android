@@ -96,7 +96,6 @@ public class ToDoAdapter extends ListAdapter<Ticket, ToDoAdapter.ViewHolder> {
                 ImageView deleteTicket = itemView.findViewById(R.id.deleteTicket);
                 deleteTicket.setVisibility(View.GONE);
             }
-            System.out.println("BOMBA");
         }
     }
 }

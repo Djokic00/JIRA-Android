@@ -5,12 +5,12 @@ import android.os.Parcelable;
 
 public class TicketParcelable extends Ticket implements Parcelable {
 
-    public TicketParcelable(String title, String description, String ticketType, String ticketPriority, int numberOfDays, String ticketState) {
-        super(title, description, ticketType, ticketPriority, numberOfDays, ticketState);
+    public TicketParcelable(String title, String description, String ticketType, String ticketPriority, int numberOfDays, int id, String ticketState) {
+        super(title, description, ticketType, ticketPriority, numberOfDays, id, ticketState);
     }
 
     public TicketParcelable(Parcel in) {
-        super(in.readString(), in.readString(), in.readString(), in.readString(), in.readInt(), in.readString());
+        super(in.readString(), in.readString(), in.readString(), in.readString(), in.readInt(), in.readInt(), in.readString());
     }
 
     public static final Creator<TicketParcelable> CREATOR = new Creator<TicketParcelable>() {
@@ -37,6 +37,7 @@ public class TicketParcelable extends Ticket implements Parcelable {
         parcel.writeString(ticketType);
         parcel.writeString(ticketPriority);
         parcel.writeInt(numberOfDays);
+        parcel.writeInt(id);
         parcel.writeString(ticketState);
 
     }
