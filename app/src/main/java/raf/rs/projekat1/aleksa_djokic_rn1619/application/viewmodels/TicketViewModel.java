@@ -87,24 +87,15 @@ public class TicketViewModel extends ViewModel {
 
     public void editTicket(Ticket oldTicket) {
         int index = toDoTicketList.indexOf(oldTicket);
-        for (Ticket ticket : toDoTicketList) {
-            System.out.println(ticket.toString());
-        }
         if (index < 0) {
-            System.out.println("WHAT");
             return;
         }
         toDoTicketList.set(index, oldTicket);
         ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
-        System.out.println("KONACNO");
         toDoTickets.setValue(listToSubmit);
-
     }
 
     public void editToDoTicket(Ticket oldTicket, Ticket newTicket) {
-        for (Ticket ticket : toDoTicketList) {
-            System.out.println(ticket.toString());
-        }
         for (Ticket ticket: toDoTicketList) {
             if (ticket.getId() == oldTicket.getId()) {
                 ticket.setTitle(newTicket.getTitle());
@@ -113,14 +104,11 @@ public class TicketViewModel extends ViewModel {
                 ticket.setTicketPriority(newTicket.getTicketPriority());
                 ticket.setNumberOfDays(newTicket.getNumberOfDays());
                 ticket.setTicketState(oldTicket.getTicketState());
+                System.out.println(ticket);
             }
         }
-        System.out.println("---------------------------------------------------------");
-        for (Ticket ticket : toDoTicketList) {
-            System.out.println(ticket.toString());
-        }
-
         ArrayList<Ticket> listToSubmit = new ArrayList<>(toDoTicketList);
+        System.out.println("Dolazi do ovde");
         toDoTickets.setValue(listToSubmit);
     }
 

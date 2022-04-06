@@ -1,18 +1,23 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.widget.*;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
+import raf.rs.projekat1.aleksa_djokic_rn1619.application.view.fragments.ToDoTicket;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.viewmodels.TicketViewModel;
 
 public class EditTicketActivity extends AppCompatActivity {
 
     public static final String EDIT_KEY = "editKey";
+    public static final String RETURN_TO_DETAILS = "returnToDetails";
     private TextView heading;
     private Spinner ticketSpinner;
     private Spinner prioritySpinner;
@@ -21,7 +26,6 @@ public class EditTicketActivity extends AppCompatActivity {
     private EditText ticketDescription;
     private Button saveTicketBtn;
     private int estimation;
-    private int ticketNumber = 0;
     private Ticket oldTicket;
     private TicketViewModel ticketViewModel;
 
@@ -91,13 +95,18 @@ public class EditTicketActivity extends AppCompatActivity {
                 try {
                     estimation = Integer.parseInt(est.getText().toString());
 //                    Ticket newTicket = new Ticket(ticketTitle.getText().toString(), ticketDescription.getText().toString(), ticketSpinner.getSelectedItem().toString(),
-//                            prioritySpinner.getSelectedItem().toString(), estimation, ticketNumber, "toDo");
-                    Ticket newTicket = oldTicket;
-                    newTicket.setTicketType(ticketSpinner.getSelectedItem().toString());
+//                            prioritySpinner.getSelectedItem().toString(), estimation, oldTicket.getId(), "toDo");
 
-                    // Odavde pozivam
-                    if (oldTicket.getTicketState().equals("toDo")) ticketViewModel.editToDoTicket(oldTicket, newTicket);
-                    else if (oldTicket.getTicketState().equals("inProgress")) ticketViewModel.editInProgressTicket(oldTicket, newTicket);
+                    oldTicket.setTitle(ticketTitle.getText().toString());
+                    oldTicket.setDescription(ticketDescription.getText().toString());
+                    oldTicket.setTicketType(ticketSpinner.getSelectedItem().toString());
+                    oldTicket.setTicketPriority(prioritySpinner.getSelectedItem().toString());
+                    oldTicket.setNumberOfDays(estimation);
+                    sendData(oldTicket);
+
+//                    if (oldTicket.getTicketState().equals("toDo")) ticketViewModel.editToDoTicket(oldTicket, newTicket);
+//                    else if (oldTicket.getTicketState().equals("inProgress")) ticketViewModel.editInProgressTicket(oldTicket, newTicket);
+
 
                     est.getText().clear();
                     ticketTitle.getText().clear();
@@ -108,6 +117,13 @@ public class EditTicketActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void sendData(Ticket newTicket) {
+        Intent intent = new Intent();
+        intent.putExtra(RETURN_TO_DETAILS, newTicket);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
     }
 
 }

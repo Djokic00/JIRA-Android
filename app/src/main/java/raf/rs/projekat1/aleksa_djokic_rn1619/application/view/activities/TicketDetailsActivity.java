@@ -1,5 +1,6 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,20 +9,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.TicketParcelable;
+import raf.rs.projekat1.aleksa_djokic_rn1619.application.view.fragments.ToDoTicket;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.viewmodels.TicketViewModel;
 
 import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.EditTicketActivity.EDIT_KEY;
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.EditTicketActivity.RETURN_TO_DETAILS;
 import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.LoginActivity.PACKAGE_NAME;
 
 public class TicketDetailsActivity extends AppCompatActivity {
 
     public static final String DETAILS_KEY = "detailsKey";
+    public static final String RETURN_TO_MAIN = "lastChance";
     private ImageView ticketTypeImage;
     private TextView ticketTitle;
     private TextView priorityInfo;
@@ -91,7 +97,29 @@ public class TicketDetailsActivity extends AppCompatActivity {
         editTicketBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, EditTicketActivity.class);
             intent.putExtra(EDIT_KEY, ticket);
-            startActivity(intent);
+            editActivityResultLauncher.launch(intent);
         });
+    }
+
+    private ActivityResultLauncher<Intent> editActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data.getExtras() != null) {
+                        Ticket ticket = data.getExtras().getParcelable(RETURN_TO_DETAILS);
+                        System.out.println(ticket.toString());
+                        sendBackToMain(ticket);
+                    }
+                }
+            }
+    );
+
+    public void sendBackToMain(Ticket newTicket) {
+        Intent returnIntent = new Intent(this, ToDoTicket.class);
+        returnIntent.putExtra(RETURN_TO_MAIN, newTicket);
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
+        // kad se odradi finish, launcher koji ga je startovao dobija odgovor
     }
 }

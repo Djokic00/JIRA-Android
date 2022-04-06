@@ -1,12 +1,14 @@
 package raf.rs.projekat1.aleksa_djokic_rn1619.application.view.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,17 +17,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.application.R;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.Ticket;
-import raf.rs.projekat1.aleksa_djokic_rn1619.application.models.TicketParcelable;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.recycler.adapter.ToDoAdapter;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.recycler.differ.TicketDiffer;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.TicketDetailsActivity;
 import raf.rs.projekat1.aleksa_djokic_rn1619.application.viewmodels.TicketViewModel;
+import static android.app.Activity.RESULT_OK;
+import static raf.rs.projekat1.aleksa_djokic_rn1619.application.view.activities.TicketDetailsActivity.RETURN_TO_MAIN;
+
 
 public class ToDoTicket extends Fragment {
     private TicketViewModel ticketViewModel;
     private ToDoAdapter toDoAdapter;
     private RecyclerView recyclerView;
     private EditText search;
+    private Ticket ticket;
 
     public ToDoTicket() {
         super(R.layout.fragment_todo_recycler);
@@ -63,21 +68,21 @@ public class ToDoTicket extends Fragment {
 
     public void initObservers() {
         ticketViewModel.getToDoTickets().observe(getViewLifecycleOwner(), ticket -> {
-            System.out.println("Ulazi");
+            System.out.println("Observers are notified");
             toDoAdapter.submitList(ticket);
         });
     }
 
     public void initRecycler() {
         toDoAdapter = new ToDoAdapter(new TicketDiffer(), ticket -> {
-//            Ticket ticket1 = ticket;
-//            ticket1.setTitle("Sad radi...");
-//            ticketViewModel.editToDoTicket(ticket, ticket1);
+            this.ticket = ticket;
             Intent intent = new Intent(requireActivity(), TicketDetailsActivity.class);
-//            intent.putExtra(TicketDetailsActivity.DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
-//                    ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getId(), ticket.getTicketState()));
             intent.putExtra(TicketDetailsActivity.DETAILS_KEY, ticket);
-            startActivity(intent);
+            ticketActivityResultLauncher.launch(intent);
+//
+//            intent.putExtra(TicketDetailsActivity.DETAILS_KEY, new TicketParcelable(ticket.getTitle(), ticket.getDescription(),
+//            ticket.getTicketType(), ticket.getTicketPriority(), ticket.getNumberOfDays(), ticket.getId(), ticket.getTicketState()));
+//            startActivity(intent);
         }, ticket -> {
             ticketViewModel.moveForwardTicket(ticket);
         }, ticket -> {
@@ -86,4 +91,28 @@ public class ToDoTicket extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(toDoAdapter);
     }
+
+    private ActivityResultLauncher<Intent> ticketActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data.getExtras() != null) {
+                        Ticket ticket = data.getExtras().getParcelable(RETURN_TO_MAIN);
+                        System.out.println(ticket.toString());
+                        edit(ticket);
+                    }
+                }
+            }
+    );
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void edit(Ticket newTicket) {
+//      ticket.setTitle(newTicket.getTitle());
+        ticketViewModel.editToDoTicket(ticket, newTicket);
+        toDoAdapter.notifyDataSetChanged();
+
+    }
+
+
 }
