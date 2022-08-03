@@ -10,7 +10,8 @@ JIRA is an Android application written in Java using Android Studio and it was t
 
 Login - To enter the application as admin you need to enter <b>admin</b> for username and <b>admin123</b> for password (users are not stored in database but because of project specification login screen was necessary). Moreover, if you want to enter as user then username is optional and password is <b>aleksa123</b>. Difference between user and admin is minimal and it is desribed in the project specification.
 
-## Features
+## Technologies
+- Java and Android Studio
 - ViewModel
 - LiveData
 - SharedPrefrences
